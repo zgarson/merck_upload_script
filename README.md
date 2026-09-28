@@ -85,7 +85,8 @@ Output:Directory /Users/zachgarson/Data_Engineering/Merck Weekly PLDs/20260928 a
 ...
 Upload process completed. Files are in /Users/zachgarson/Data_Engineering/Merck Weekly PLDs/20260928_2.
 With an alias configuredmerck_upload "/Users/zachgarson/Downloads/Merck_PLD_20260928" test
-Sample audit file output2026|20260921|ACE_Response_001.txt|14523
+Sample audit file output
+2026|20260921|ACE_Response_001.txt|14523
 2026|20260921|ACE_Response_002.txt|8871
 2026|20260928|ACE_Response_001.txt|15102
 2026|20260928|ACE_Response_002.txt|9344
