@@ -96,7 +96,7 @@ No filenames in the source directory contain Response, or the rows already exist
 No such file or directory on the audit path
 The CloudMounter share isn't mounted. Mount it and re-run.Unable to locate credentialsThe mercks3access profile isn't configured. Check aws configure list --profile mercks3access.
 Record counts are off by oneThe script assumes every response file has exactly one header row.Nothing uploaded, no errorSecond argument was test. Re-run without it.
-Notes
+Notes:
 Only files whose name contains Response generate audit rows, but all .txt
 files found in the source directory are copied and uploaded.
 record_count_v3.sh is safe to re-run — the duplicate check means it won't double
