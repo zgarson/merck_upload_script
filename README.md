@@ -27,11 +27,11 @@ machine.
    `YYYYMMDD`. If that folder already exists (i.e. you're uploading more than once
    in a day), it creates `YYYYMMDD_2`, `YYYYMMDD_3`, and so on, so a previous
    delivery is never overwritten.
-2. **Copies every `.txt` file** found recursively under the source directory into
+2. **Copies every `.txt` file** found recursively under the source directory (i.e. the Merck folder in Feeds_Deployed) into
    that upload folder.
 3. **Appends audit rows** for each file whose name contains `Response`, in the
    format:
-YEAR|YYYYMMDD|FILENAME|RECORD_COUNTThe record count is the line count minus one, to exclude the header row.
+YEAR|YYYYMMDD|FILENAME|RECORD_COUNT The record count is the line count minus one, to exclude the header row.
 4. **Copies the updated audit file** into the upload folder so it ships with the
 delivery.
 5. **Uploads the folder to S3** — unless test mode is on.
@@ -41,8 +41,6 @@ delivery.
 The audit file is a cumulative, append-only log, so the support script is careful
 with it:
 
-- If the file doesn't end in a newline, one is added first — otherwise the first new
-row would be concatenated onto the last existing row.
 - Each row is checked against the file before being written, so re-running the
 script won't create duplicate entries.
 - The trailing newline is stripped at the end, leaving no blank line at the bottom
