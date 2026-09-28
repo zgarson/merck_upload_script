@@ -81,17 +81,30 @@ Clone the repo and make both scripts executable:
 ```bash
 chmod +x merck_upload.sh record_count_v3.sh
 That's the entire setup. Do not edit the scripts — on first run you'll be
-prompted for:PromptWhat to enterUpload staging directoryWhere dated delivery folders get created, e.g. ~/Data_Engineering/Merck Weekly PLDs. If it doesn't exist, you'll be offered the chance to create it.Audit file pathFull path to the RELEVATE audit .txt on the CloudMounter share. If the share isn't mounted you'll get a warning and can still save the path.Both prompts accept ~ and tab-completion, and trailing slashes are stripped
-automatically.Your answers are written to:~/.config/merck_upload/config
+prompted for:
+Prompt: What to enter
+Upload staging directory
+Where dated delivery folders get created, e.g. ~/Data_Engineering/Merck Weekly PLDs. If it doesn't exist, you'll be offered the chance to create it.Audit file path
+Full path to the RELEVATE audit .txt on the CloudMounter share. If the share isn't mounted you'll get a warning and can still save the path.
+Both prompts accept ~ and tab-completion, and trailing slashes are stripped
+automatically. Your answers are written to:~/.config/merck_upload/config
 That file lives outside the repo, so git pull never overwrites it and nobody's
-personal paths end up in a commit. It's created with 600 permissions.Changing the saved paths./merck_upload.sh --reconfigure
+personal paths end up in a commit. It's created with 600 permissions.
+Changing the saved paths:
+./merck_upload.sh --reconfigure
 This re-runs the prompts and overwrites the saved values, then exits without
 uploading. Deleting ~/.config/merck_upload/config has the same effect — setup
-simply runs again on your next execution.Optional: add an aliasAdd this to ~/.zshrc (or ~/.bashrc if you use bash):alias merck_upload='/path/to/repo/merck_upload.sh'
+simply runs again on your next execution.Optional: add an aliasAdd this to ~/.zshrc (or ~/.bashrc if you use bash):
+alias merck_upload='/path/to/repo/merck_upload.sh'
 Reload your shell:source ~/.zshrc
 Usage./merck_upload.sh <source_directory> [test]
 ./merck_upload.sh --reconfigure
-ArgumentRequiredDescriptionsource_directoryYesFolder containing the PLD .txt files. Searched recursively.testNoPass the literal string test to stage files and update the audit file without uploading to S3.--reconfigure—Used alone. Re-prompts for the saved paths and exits.Example usageFirst run./merck_upload.sh "/Users/zachgarson/Downloads/Merck_PLD_20260928" test
+ArgumentRequiredDescriptionsource_directoryYesFolder containing the PLD .txt files. Searched recursively.
+testNoPass the literal string test to stage files and update the audit file without uploading to S3.
+--reconfigure—Used alone. Re-prompts for the saved paths and exits.
+Example usage
+First run
+./merck_upload.sh "/Users/zachgarson/Downloads/Merck_PLD_20260928" test
 ----------------------------------------------------------
  Merck Upload — first-time setup
 ----------------------------------------------------------
