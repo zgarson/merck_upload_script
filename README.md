@@ -78,7 +78,7 @@ inbound bucket
 
 Clone the repo and make both scripts executable:
 
-```bash
+
 chmod +x merck_upload.sh record_count_v3.sh
 That's the entire setup. Do not edit the scripts — on first run you'll be
 prompted for:
