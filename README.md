@@ -27,7 +27,7 @@ It also supports a **test mode** that performs every step *except* the upload, s
 
 3. **Creates a dated upload folder** under your staging directory, named `YYYYMMDD`. If that folder already exists (i.e. you're uploading more than once in a day), it creates `YYYYMMDD_2`, `YYYYMMDD_3`, and so on, so a previous delivery is never overwritten.
 
-4. **Copies every `.txt` file** found recursively under the source directory into that upload folder.
+4. **Copies every `.txt` file** found recursively under the source directory (i.e. the Merck folder in Feeds_Deployed) into that upload folder.
 
 5. **Appends audit rows** for each file whose name contains `Response`, in the format:
 
