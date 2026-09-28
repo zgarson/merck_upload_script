@@ -40,7 +40,7 @@ files together.
    If that folder already exists (i.e. you're uploading more than once in a day), it
    creates `YYYYMMDD_2`, `YYYYMMDD_3`, and so on, so a previous delivery is never
    overwritten.
-4. **Copies every `.txt` file** found recursively under the source directory into
+4. **Copies every `.txt` file** found recursively under the source directory (i.e. the Merck folder in Feeds_Deployed) into
    that upload folder.
 5. **Appends audit rows** for each file whose name contains `Response`, in the
    format:
@@ -130,7 +130,23 @@ Sample audit file output2026|20260921|ACE_Response_001.txt|14523
 2026|20260921|ACE_Response_002.txt|8871
 2026|20260928|ACE_Response_001.txt|15102
 2026|20260928|ACE_Response_002.txt|9344
-TroubleshootingMessage / symptomCause and fixERROR: source directory does not existTypo in the first argument, or the path needs quoting because it contains spaces.ERROR: support script not found or not executablerecord_count_v3.sh was moved out of the repo folder, or was never made executable — run chmod +x record_count_v3.sh.ERROR: audit file directory is not reachableThe CloudMounter share isn't mounted. Mount it and re-run. If the saved path itself is wrong, run --reconfigure.Usage message with no other outputNo source directory was passed.Setup prompts appear again unexpectedly~/.config/merck_upload/config was deleted, or one of its values is empty.No new lines in the audit fileNo filenames in the source directory contain Response, or the rows already exist (the duplicate guard skipped them).Unable to locate credentialsThe mercks3access profile isn't configured. Check aws configure list --profile mercks3access.Record counts are off by oneThe script assumes every response file has exactly one header row.Nothing uploaded, no errorSecond argument was test. Re-run without it.Notes
+TroubleshootingMessage / symptomCause and fix:
+ERROR: source directory does not existTypo in the first argument, or the path needs quoting because it contains spaces.
+ERROR: support script not found or not executable
+record_count_v3.sh was moved out of the repo folder, or was never made executable — run chmod +x record_count_v3.sh.
+ERROR: audit file directory is not reachableThe CloudMounter share isn't mounted. Mount it and re-run. If the saved path itself is wrong, run --reconfigure.
+Usage message with no other output
+No source directory was passed.
+Setup prompts appear again unexpectedly
+~/.config/merck_upload/config was deleted, or one of its values is empty.
+No new lines in the audit file
+No filenames in the source directory contain Response, or the rows already exist (the duplicate guard skipped them).
+Unable to locate credentials
+The mercks3access profile isn't configured. Check aws configure list --profile mercks3access.
+Record counts are off by one
+The script assumes every response file has exactly one header row.
+Nothing uploaded, no errorSecond argument was test. Re-run without it.
+Notes"
 Only files whose name contains Response generate audit rows, but all .txt
 files found in the source directory are copied and uploaded.
 record_count_v3.sh is safe to re-run — the duplicate check means it won't double
